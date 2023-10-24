@@ -1,0 +1,27 @@
+<% if @photos.first.genre == "space" %>
+  <h2 class="center pad-25-bottom pad-25-top"><%= @photos.first.genre.capitalize %></h2>
+<% else %>
+  <h2 class="center pad-25-bottom pad-25-top"><%= @photos.first.genre.capitalize.pluralize %></h2>
+<% end %>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+   <div class="image-wrapper">
+      <img src="/assets/<%= params[:genre] %>.jpg" alt="Background Image">
+    </div>
+  </div>
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-sm-4">
+        <div class="card photo-card">
+          <div class="index-images">
+            <%= image_tag("#{photo.url}", :alt => "Picture missing") %>
+          </div>
+          <div class="photo-index-title">
+            <%= photo.title %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
